@@ -1,10 +1,11 @@
 ---
 layout: post
-title: What's Jekyll?
+title: Welcome to MSGalaxy!
 description: >
-  Jekyll is a static site generator, an open-source tool for creating simple yet powerful websites of all shapes and sizes.
-tags: [hyde]
-author: author2
+  Welcome to the MSGalactic Blog, a list of MSGalaxy related blog posts from community members. This blog contains longer form posts or pointers to longer form posts that are elsewhere on the web.
+The Galactic Blog complements the Galxy News feed.
+tags: 
+author: author
 ---
 
 [Jekyll](https://jekyllrb.com) is a static site generator, an open-source tool for creating simple yet powerful websites of all shapes and sizes. From [the project's readme](https://github.com/mojombo/jekyll/blob/master/README.markdown):
