@@ -17,8 +17,8 @@ None
 
 ## Manual Installation 
 The following file(s) is the script placed in the somewhere in `$GALAXY_ROOT/tools/`.
-	* 'cut_line_threshold.py'
-    * 'cut_line_threshold.xml'
+* 'cut_line_threshold.py'
+* 'cut_line_threshold.xml'
 	
 Then edit the '$GALAXY_ROOT/config/tool_conf.xml.main' and specify the path the '*.xml' was placed.
 
@@ -32,7 +32,7 @@ Then edit the '$GALAXY_ROOT/config/tool_conf.xml.main' and specify the path the 
     </section>
 ~~~
 
-The file tag can also be in a subdirectory
+* The file tag can also be in a subdirectory
 
 ## Running the Tests
 Each 'Repository' has a subdirectory labeled 'test-data'. These are the files that are used as inputs to veryify the funtionality of the particular tool. This can be done manually by reading the README instructions for each repo or done automatically through the Toolshed installation process.
@@ -59,15 +59,15 @@ optional arguments:
   --include             remove lines outside of the threshold
 ~~~
 
-	* '-f' specifies a tabular (csv) file input for processing.
-	* '-t' is the threshold value that the column values are compared against
-	* '-c' specifies on which column of data denoising executes
-	* '--comparator' this is comparator string that specifies what comparison is made:
-		  *<
-		  *==
-		  *…  
-	* '--exclude' specifies that the satisfied condition is NOT returned
-	* '--include' specifies that the satisfied condition is returned
+* '-f' specifies a tabular (csv) file input for processing.
+* '-t' is the threshold value that the column values are compared against
+* '-c' specifies on which column of data denoising executes
+* '--comparator' this is comparator string that specifies what comparison is made:
+	* <
+	* ==
+	* …  
+* '--exclude' specifies that the satisfied condition is NOT returned
+* '--include' specifies that the satisfied condition is returned
 
 
 ## Example
@@ -77,5 +77,5 @@ cut_line_threshold.py -f ./test-data/test.txt --comparator "<=" -c 6 -t "25.3" -
 ~~~
 
 ## Acknowledgements 
-	* Original Galaxy Team
-	* To-do - Add Acknowledgements 
+* Original Galaxy Team
+* To-do - Add Acknowledgements 
