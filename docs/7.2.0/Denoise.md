@@ -1,8 +1,8 @@
 ---
 layout: page
-title: Cut Line Threshold
+title: Denoise
 description: >
-  This tool removes or keeps entire lines based on a threshold input.
+  This tool is a simple 1-D denoising toolbox with diffenent approaches for denoising data
 ---
 
 ## Table of Contents
@@ -11,14 +11,18 @@ description: >
 {:toc}
 
 ## Prerequisites
-None
-
+* Python2.7
+	* csv
+	* scipy
+	* numpy
+	* argparse
+	* sys
 
 
 ## Manual Installation 
 The following file(s) is the script placed in the somewhere in `$GALAXY_ROOT/tools/`.
-* 'cut_line_threshold.py'
-* 'cut_line_threshold.xml'
+* 'denoise.py'
+* 'denoise.xml'
 	
 Then edit the '$GALAXY_ROOT/config/tool_conf.xml.main' and specify the path the '*.xml' was placed.
 
@@ -28,7 +32,7 @@ Then edit the '$GALAXY_ROOT/config/tool_conf.xml.main' and specify the path the 
 .
 .
     <section id="mat_tools" name="materials tools">
-      <tool file="cut_line_threshold.xml" />
+      <tool file="denoise.xml" />
     </section>
 ~~~
 
@@ -41,39 +45,34 @@ Each 'Repository' has a subdirectory labelled 'test-data'. These are the files t
 ## Flags
 
 ~~~
-usage: cut_line_threshold.py [-h] [-f TXT_FILE_PATH] [-t THRESHOLD_FLOAT]
-                             [-c COLUMN_INT] [--comparator COMPARATOR_STR]
-                             [--exclude] [--include]
+usage: denoise.py [-h] [-f TXT_FILE_PATH] [-algo ALGO] [-c COLUMN_INT]
+                  [-w WINDOW_INT] [-e]
 
 optional arguments:
   -h, --help            show this help message and exit
   -f TXT_FILE_PATH, --file TXT_FILE_PATH
                         specify the data file location
-  -t THRESHOLD_FLOAT, --threshold THRESHOLD_FLOAT
-                        threshold value that a line is removed
+  -algo ALGO, --algorithim ALGO
+                        algorithim for denoising data
   -c COLUMN_INT, --column COLUMN_INT
                         select column to denoise
-  --comparator COMPARATOR_STR
-                        set comparator type
-  --exclude             remove lines inside the threshold
-  --include             remove lines outside of the threshold
+  -w WINDOW_INT, --window WINDOW_INT
+                        window size to denoise
+  -e, --exclude         ignore other columns from output
 ~~~
 
 * '-f' specifies a tabular (csv) file input for processing.
-* '-t' is the threshold value that the column values are compared against
-* '-c' specifies on which column of data denoising executes
-* '--comparator' this is comparator string that specifies what comparison is made:
-	* <
-	* ==
-	* …  
-* '--exclude' specifies that the satisfied condition is NOT returned
-* '--include' specifies that the satisfied condition is returned
+* '-algo' specifies the particular algorithim that is used for denoising the data.
+	* Currently only ”moving average” is configured.
+* '-w' is the window sizes that the algorithim uses for comparing neighboring data points when denoising.
+* '-c' specifies on which column of data denoising executes.
+* '-e' specifies whether the stdout is only the denoised column
 
 
 ## Example
 
 ~~~
-cut_line_threshold.py -f ./test-data/test.txt --comparator "<=" -c 6 -t "25.3" --exclude
+denoise.py -f ./test-data/test.txt -algo "moving average" -w 18 -c 3
 ~~~
 
 ## Acknowledgements 
